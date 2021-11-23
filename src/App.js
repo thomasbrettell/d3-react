@@ -5,6 +5,8 @@ import Vis1 from './vis/Vis1';
 import Vis2 from './vis/Vis2';
 import Vis3 from './vis/Vis3';
 import Vis4 from './vis/Vis4';
+import Vis5 from './vis/Vis5';
+import Vis6 from './vis/Vis6';
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
       <Route path='/vis-2' element={<Vis2 />} />
       <Route path='/vis-3' element={<Vis3 />} />
       <Route path='/vis-4' element={<Vis4 />} />
+      <Route path='/vis-5' element={<Vis5 />} />
+      <Route path='/vis-6' element={<Vis6 />} />
     </Routes>
   );
 };
