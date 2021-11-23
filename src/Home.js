@@ -23,6 +23,9 @@ const Home = () => {
         <li>
           <Link to='/vis-6'>Vis 6 - Geojson</Link>
         </li>
+        <li>
+          <Link to='/vis-7'>Vis 7 - IMDb USA Votes 1890 - 2020</Link>
+        </li>
       </ul>
     </nav>
   );

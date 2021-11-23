@@ -1,8 +1,8 @@
-import React from 'react';
-import countriesData from './data/countries-50m.json';
+import React, { useState, useCallback, useEffect } from 'react';
 import { feature, mesh } from 'topojson-client';
 import { geoPath, geoNaturalEarth1, geoGraticule } from 'd3-geo';
 import styled from 'styled-components';
+import useData from '../../hooks/useData';
 
 const VisBox = styled.div`
   display: flex;
@@ -38,12 +38,26 @@ const GeoGraticules = styled.path`
 `;
 
 const Vis6 = () => {
-  const topology = feature(countriesData, countriesData.objects.countries);
-  const interiors = mesh(
-    countriesData,
-    countriesData.objects.countries,
-    (a, b) => a !== b
-  );
+  const [topology, setTopology] = useState(null);
+  const [interiors, setInteriors] = useState(null);
+
+  const transformData = useCallback((countriesData) => {
+    setTopology(feature(countriesData, countriesData.objects.countries));
+    setInteriors(
+      mesh(countriesData, countriesData.objects.countries, (a, b) => a !== b)
+    );
+  }, []);
+  const { sendRequest } = useData(transformData);
+
+  useEffect(() => {
+    sendRequest({
+      url: 'https://unpkg.com/world-atlas@2.0.2/countries-110m.json',
+    });
+  }, [sendRequest]);
+
+  if (!topology || !interiors) {
+    return <p>Fetching data...</p>;
+  }
   const graticules = geoGraticule();
 
   console.log(topology);
