@@ -85,7 +85,8 @@ const Vis4 = () => {
 
   const yScale = scaleLinear()
     .domain(extent(data, (dp) => dp[yPlot]))
-    .range([0, innerHeight]);
+    .range([0, innerHeight])
+    .nice();
 
   const xScale = scaleLinear()
     .domain(extent(data, (dp) => dp[xPlot]))
