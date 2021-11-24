@@ -83,7 +83,7 @@ const Vis8 = () => {
 
   return (
     <>
-      <H1 id='title'>US GDP 1945-2020</H1>
+      <H1 id='title'>US GDP 1947-2020</H1>
       <VisBox>
         <svg height={height} width={width}>
           {tooltip && (
