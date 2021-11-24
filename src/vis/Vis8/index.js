@@ -34,6 +34,14 @@ const Tooltip = styled.g`
   }
 `;
 
+const Bar = styled.rect`
+  fill: white;
+
+  &:hover {
+    fill: red;
+  }
+`;
+
 const Vis8 = () => {
   const fccEl = document.getElementById('fcc_test_suite_wrapper');
   fccEl.style.display = 'block';
@@ -131,11 +139,10 @@ const Vis8 = () => {
               ))}
             </g>
             {data.map((dp, i) => (
-              <rect
+              <Bar
                 key={i}
                 height={innerHeight - yScale(dp[1])}
                 x={xScale(new Date(dp[0]))}
-                fill='red'
                 width={innerWidth / data.length}
                 transform={`translate(0, ${yScale(dp[1])})`}
                 className='bar'
@@ -143,7 +150,7 @@ const Vis8 = () => {
                 data-gdp={dp[1]}
                 onMouseEnter={() => setTooltip([dp[0], dp[1]])}
                 onMouseOut={() => setTooltip(null)}
-              ></rect>
+              ></Bar>
             ))}
           </g>
         </svg>
