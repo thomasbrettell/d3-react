@@ -26,7 +26,7 @@ const GeoInterior = styled.path`
 `;
 
 const GeoSphere = styled.path`
-  fill: none;
+  fill: #ffffff0d;
   stroke: white;
   stroke-width: 0.5;
 `;

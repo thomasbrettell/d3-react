@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import csvData from './data/iris-csv.txt';
 import { csvParse } from 'd3-dsv';
 import { extent } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import styled from 'styled-components';
 
 const VisBox = styled.div`
@@ -26,7 +26,14 @@ const XAxisText = styled.text`
 `;
 
 const CirclePlot = styled.circle`
-  fill: #ffffffb0;
+  opacity: 0.7;
+  transition: opacity 0.1s ease-in-out;
+
+  ${(p) =>
+    p.notSelected &&
+    `
+    opacity: 0.1;
+  `}
 `;
 
 const XAxisLabel = styled.text`
@@ -50,10 +57,22 @@ const InputControl = styled.label`
   }
 `;
 
+const ColourScale = styled.g`
+  cursor: pointer;
+  transition: opacity 0.1s ease-in-out;
+
+  ${(p) =>
+    p.notSelected &&
+    `
+    opacity: 0.1;
+  `}
+`;
+
 const Vis4 = () => {
   const [radius, setRadius] = useState(10);
   const [yPlot, setYPlot] = useState('sepal_width');
   const [xPlot, setXPlot] = useState('sepal_length');
+  const [hoveredValue, setHoveredValue] = useState(null);
 
   const data = csvParse(csvData).map((dp) => {
     for (const prop in dp) {
@@ -75,7 +94,7 @@ const Vis4 = () => {
   const width = 980;
   const height = 460;
   const margin = {
-    top: 20,
+    top: 40,
     right: 40,
     bottom: 60,
     left: 70,
@@ -93,7 +112,11 @@ const Vis4 = () => {
     .range([0, innerWidth])
     .nice();
 
-  console.log(data);
+  const colorVal = (dp) => dp.species;
+  const colorScale = scaleOrdinal()
+    .domain(data.map(colorVal))
+    .range(['orange', 'purple', 'green']);
+
   return (
     <>
       <VisBox>
@@ -123,12 +146,30 @@ const Vis4 = () => {
             >
               {yPlot}
             </YAxisLabel>
+            {colorScale.domain().map((color, i) => (
+              <ColourScale
+                key={color}
+                transform={`translate(${120 * i + 20}, -20)`}
+                onMouseEnter={() => setHoveredValue(color)}
+                onMouseOut={() => setHoveredValue(null)}
+                notSelected={color !== hoveredValue && hoveredValue !== null}
+              >
+                <circle r='10' cy='-5' fill={colorScale(color)}></circle>
+                <text fill='white' x='15'>
+                  {color}
+                </text>
+              </ColourScale>
+            ))}
             {data.map((dp, i) => (
               <CirclePlot
                 key={i}
                 cx={xScale(dp[xPlot])}
                 cy={yScale(dp[yPlot])}
                 r={radius}
+                fill={colorScale(dp.species)}
+                notSelected={
+                  dp.species !== hoveredValue && hoveredValue !== null
+                }
               >
                 <title>{dp.species}</title>
               </CirclePlot>
