@@ -3,6 +3,9 @@ import { feature, mesh } from 'topojson-client';
 import { geoPath, geoNaturalEarth1, geoGraticule } from 'd3-geo';
 import styled from 'styled-components';
 import useData from '../../hooks/useData';
+import { csvParse } from 'd3-dsv';
+import { scaleSqrt } from 'd3-scale';
+import { max } from 'd3-array';
 
 const VisBox = styled.div`
   display: flex;
@@ -13,10 +16,6 @@ const VisBox = styled.div`
 const GeoPath = styled.path`
   fill: white;
   stroke: none;
-
-  &:hover {
-    fill: red;
-  }
 `;
 
 const GeoInterior = styled.path`
@@ -37,9 +36,15 @@ const GeoGraticules = styled.path`
   fill: none;
 `;
 
+const PopulationPoint = styled.circle`
+  fill: red;
+  opacity: 0.45;
+`;
+
 const Vis6 = () => {
   const [topology, setTopology] = useState(null);
   const [interiors, setInteriors] = useState(null);
+  const [population, setPopulation] = useState(null);
 
   const transformData = useCallback((countriesData) => {
     setTopology(feature(countriesData, countriesData.objects.countries));
@@ -49,13 +54,33 @@ const Vis6 = () => {
   }, []);
   const { sendRequest } = useData(transformData);
 
+  const transformPopulationData = useCallback((countriesData) => {
+    setPopulation(
+      csvParse(countriesData).map((dp) => {
+        dp.lat = +dp.lat;
+        dp.lng = +dp.lng;
+        dp.population = +dp.population;
+        return dp;
+      })
+    );
+  }, []);
+  const { sendRequest: requestPopulation } = useData(
+    transformPopulationData,
+    'text'
+  );
+
   useEffect(() => {
     sendRequest({
       url: 'https://unpkg.com/world-atlas@2.0.2/countries-110m.json',
     });
-  }, [sendRequest]);
+    requestPopulation({
+      url: 'https://gist.githubusercontent.com/curran/13d30e855d48cdd6f22acdf0afe27286/raw/0635f14817ec634833bb904a47594cc2f5f9dbf8/worldcities_clean.csv',
+    });
+  }, [sendRequest, requestPopulation]);
 
-  if (!topology || !interiors) {
+  console.log(population);
+
+  if (!topology || !interiors || !population) {
     return <p>Fetching data...</p>;
   }
   const graticules = geoGraticule();
@@ -65,6 +90,11 @@ const Vis6 = () => {
 
   const width = 960;
   const height = 500;
+
+  const rVal = (dp) => dp.population;
+  const rScale = scaleSqrt()
+    .domain([0, max(population, rVal)])
+    .range([0, 15]);
 
   return (
     <VisBox>
@@ -79,6 +109,17 @@ const Vis6 = () => {
           />
         ))}
         <GeoInterior d={geoPath(geoNaturalEarth1())(interiors)} />
+        {population.map((dp, i) => {
+          const [x, y] = geoNaturalEarth1()([dp.lng, dp.lat]);
+          return (
+            <PopulationPoint
+              key={i}
+              cx={x}
+              cy={y}
+              r={rScale(dp.population)}
+            ></PopulationPoint>
+          );
+        })}
       </svg>
     </VisBox>
   );

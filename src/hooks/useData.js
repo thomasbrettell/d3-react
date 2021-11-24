@@ -19,8 +19,8 @@ const useData = (applyData, formatType) => {
           throw new Error('Request failed!');
         }
 
-        let data
-        if(formatType === 'text') {
+        let data;
+        if (formatType === 'text') {
           data = await response.text();
         } else {
           data = await response.json();
@@ -32,7 +32,7 @@ const useData = (applyData, formatType) => {
       }
       setIsLoading(false);
     },
-    [applyData]
+    [applyData, formatType]
   );
 
   return {
