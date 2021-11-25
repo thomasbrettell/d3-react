@@ -11,13 +11,20 @@ const Vis2 = () => {
   const centerX = width / 2;
   const centerY = height / 2;
   const pieArc = arc().innerRadius(0).outerRadius(width);
+  console.log(data);
 
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${centerX}, ${centerY})`}>
-        {pie().value(1)(data).map((el) => (
-          <path key={el.data.Keyword} fill={el.data.hexValue} d={pieArc(el)} />
-        ))}
+        {pie()
+          .value(1)(data)
+          .map((el) => (
+            <path
+              key={el.data.Keyword}
+              fill={el.data.hexValue}
+              d={pieArc(el)}
+            />
+          ))}
         {/* {data.map((el, i) => (
           <path
             key={el.Keyword}

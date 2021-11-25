@@ -53,8 +53,6 @@ const Vis8 = () => {
   }, []);
   const { sendRequest } = useData(transformData);
 
-  console.log(tooltip);
-
   useEffect(() => {
     sendRequest({
       url: 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json',
