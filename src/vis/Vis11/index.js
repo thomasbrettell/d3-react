@@ -38,6 +38,8 @@ const Vis11 = () => {
     return <p>Fetching data...</p>;
   }
 
+  console.log(data)
+
   return (
     <>
       <H1 id='title'>Monthly Land Surface Temperature</H1>
