@@ -11,6 +11,7 @@ import Vis7 from './vis/Vis7';
 import Vis8 from './vis/Vis8';
 import Vis9 from './vis/Vis9';
 import Vis10 from './vis/Vis10';
+import Vis11 from './vis/Vis11';
 
 const App = () => {
   document.getElementById('fcc_test_suite_wrapper').style.display = 'none';
@@ -28,6 +29,7 @@ const App = () => {
       <Route path='/vis-8' element={<Vis8 />} />
       <Route path='/vis-9' element={<Vis9 />} />
       <Route path='/vis-10' element={<Vis10 />} />
+      <Route path='/vis-11' element={<Vis11 />} />
     </Routes>
   );
 };

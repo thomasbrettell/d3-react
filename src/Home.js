@@ -15,6 +15,7 @@ const Home = () => {
         <NavLink link='/vis-8' text='Vis 8 - USD GDP 1947-2020 (FCC Bar Chart)'/>
         <NavLink link='/vis-9' text='Vis 9 - Doping in Pro Cycling 1994-2016 (FCC Scatterplot)'/>
         <NavLink link='/vis-10' text='Vis 10 - Better Clock'/>
+        <NavLink link='/vis-11' text='Vis 11 - Monthly Land Surface Temperature 1753-2015 (FCC Heatmap)'/>
       </ul>
     </nav>
   );
