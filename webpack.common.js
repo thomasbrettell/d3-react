@@ -31,6 +31,11 @@ module.exports = {
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.[contenthash].js',
   },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   },
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Title',

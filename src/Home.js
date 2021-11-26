@@ -1,6 +1,7 @@
 import React from 'react';
 import NavLink from './components/NavLink';
 
+//PLEASE DONT FORMAT
 const Home = () => {
   return (
     <nav>
@@ -16,6 +17,7 @@ const Home = () => {
         <NavLink link='/vis-9' text='Vis 9 - Doping in Pro Cycling 1994-2016 (FCC Scatterplot)'/>
         <NavLink link='/vis-10' text='Vis 10 - Better Clock'/>
         <NavLink link='/vis-11' text='Vis 11 - Monthly Land Surface Temperature 1753-2015 (FCC Heatmap)'/>
+        <NavLink link='/missing-migrants' text='SERIES: Missing Migrants (1 vis)'/>
       </ul>
     </nav>
   );
