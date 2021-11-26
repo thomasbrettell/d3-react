@@ -32,11 +32,11 @@ module.exports = {
     filename: 'bundle.[contenthash].js',
     publicPath: '/',
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //   },
-  // },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Title',
