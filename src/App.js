@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Home';
 import Vis1 from './vis/Vis1';
 import Vis2 from './vis/Vis2';
@@ -34,6 +34,7 @@ const App = () => {
       <Route path='/vis-11' element={<Vis11 />} />
       <Route path='/missing-migrants/' element={<MissingMigrants />} />
       <Route path='/missing-migrants/vis-1' element={<MissingMigrants1 />} />
+      <Route path='*' element={<Navigate replace to="/" />} />
     </Routes>
   );
 };
