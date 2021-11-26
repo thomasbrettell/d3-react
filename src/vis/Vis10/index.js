@@ -72,7 +72,7 @@ const Vis10 = () => {
                     fontSize={'.75rem'}
                     transform={`translate(${arcLabelSecondary.centroid(el)})`}
                   >
-                    {i + 1}
+                    {i}
                   </text>
                 </Wedge>
               ))}
