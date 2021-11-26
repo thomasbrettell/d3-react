@@ -9,6 +9,10 @@ const MissingMigrants = () => {
           link='/missing-migrants/vis-1'
           text='Vis 1 - Dead or Missing Migrants 2014-2022'
         />
+        <NavLink
+          link='/missing-migrants/vis-2'
+          text='Vis 2 - Dead or Missing Migrants Mapped Geographically (Brush)'
+        />
       </ul>
     </nav>
   );

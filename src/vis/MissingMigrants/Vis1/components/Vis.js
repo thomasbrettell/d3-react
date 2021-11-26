@@ -47,8 +47,6 @@ const Vis = ({ data }) => {
     .range([innerHeight, 0])
     .nice();
 
-  console.log(yScale.domain());
-
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left}, ${margin.top})`}>
