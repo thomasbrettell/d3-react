@@ -1,11 +1,17 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { feature, mesh } from 'topojson-client';
-import { geoPath, geoNaturalEarth1, geoGraticule } from 'd3-geo';
+import { feature } from 'topojson-client';
 import styled from 'styled-components';
 import useData from '../../hooks/useData';
-import { csvParse } from 'd3-dsv';
-import { scaleSqrt } from 'd3-scale';
-import { max } from 'd3-array';
+import Svg from './components/Svg';
+import Tooltip from './components/Tooltip';
+
+const H1 = styled.h1`
+  text-align: center;
+`;
+
+const H2 = styled.h2`
+  text-align: center;
+`;
 
 const VisBox = styled.div`
   display: flex;
@@ -13,116 +19,65 @@ const VisBox = styled.div`
   margin-top: 50px;
 `;
 
-const GeoPath = styled.path`
-  fill: white;
-  stroke: none;
+const Wrapper = styled.div`
+  position: relative;
 `;
 
-const GeoInterior = styled.path`
-  fill: none;
-  stroke-width: 0.5;
-  stroke: var(--color-primary);
-`;
+const Vis = () => {
+  const [counties, setCounties] = useState(null);
+  const [states, setStates] = useState(null);
+  const [data, setData] = useState(null);
+  const [tooltipData, setTooltipData] = useState(null);
 
-const GeoSphere = styled.path`
-  fill: #ffffff0d;
-  stroke: white;
-  stroke-width: 0.5;
-`;
-
-const GeoGraticules = styled.path`
-  stroke-width: 0.5;
-  stroke: #ffffff17;
-  fill: none;
-`;
-
-const PopulationPoint = styled.circle`
-  fill: red;
-  opacity: 0.45;
-`;
-
-const Vis6 = () => {
-  const [topology, setTopology] = useState(null);
-  const [interiors, setInteriors] = useState(null);
-  const [population, setPopulation] = useState(null);
-
-  const transformData = useCallback((countriesData) => {
-    setTopology(feature(countriesData, countriesData.objects.countries));
-    setInteriors(
-      mesh(countriesData, countriesData.objects.countries, (a, b) => a !== b)
-    );
+  const transformGeoData = useCallback((countriesData) => {
+    setCounties(feature(countriesData, countriesData.objects.counties));
+    setStates(feature(countriesData, countriesData.objects.states));
   }, []);
-  const { sendRequest } = useData(transformData);
+  const { sendRequest } = useData(transformGeoData);
 
-  const transformPopulationData = useCallback((countriesData) => {
-    setPopulation(
-      csvParse(countriesData).map((dp) => {
-        dp.lat = +dp.lat;
-        dp.lng = +dp.lng;
-        dp.population = +dp.population;
-        return dp;
-      })
-    );
+  const transformData = useCallback((data) => {
+    setData(data);
   }, []);
-  const { sendRequest: requestPopulation } = useData(
-    transformPopulationData,
-    'text'
-  );
+  const { sendRequest: requestionEducationData } = useData(transformData);
 
   useEffect(() => {
+    const fccEl = document.getElementById('fcc_test_suite_wrapper');
+    fccEl.style.display = 'block';
     sendRequest({
-      url: 'https://unpkg.com/world-atlas@2.0.2/countries-110m.json',
+      url: 'https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json',
     });
-    requestPopulation({
-      url: 'https://gist.githubusercontent.com/curran/13d30e855d48cdd6f22acdf0afe27286/raw/0635f14817ec634833bb904a47594cc2f5f9dbf8/worldcities_clean.csv',
+    requestionEducationData({
+      url: 'https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json',
     });
-  }, [sendRequest, requestPopulation]);
+    return () => {
+      fccEl.style.display = 'none';
+    };
+  }, [sendRequest, requestionEducationData]);
 
-  console.log(population);
-
-  if (!topology || !interiors || !population) {
+  if (!counties || !states || !data) {
     return <p>Fetching data...</p>;
   }
-  const graticules = geoGraticule();
-
-  console.log(topology);
-  console.log(interiors);
-
-  const width = 960;
-  const height = 500;
-
-  const rVal = (dp) => dp.population;
-  const rScale = scaleSqrt()
-    .domain([0, max(population, rVal)])
-    .range([0, 15]);
 
   return (
-    <VisBox>
-      <svg width={width} height={height}>
-        <GeoGraticules d={geoPath(geoNaturalEarth1())(graticules())} />
-        <GeoSphere d={geoPath(geoNaturalEarth1())({ type: 'Sphere' })} />
-        {topology.features.map((dp) => (
-          <GeoPath
-            key={dp.properties.name}
-            id={dp.id}
-            d={geoPath(geoNaturalEarth1())(dp)}
+    <>
+      <H1 id='title'>United States Degree Attainment</H1>
+      <H2 id='description'>
+        Percentage of adults age 25 and older with a bachelor&#8217;s degree or
+        higher (2010-2014)
+      </H2>
+      <VisBox>
+        <Wrapper>
+          <Svg
+            states={states}
+            counties={counties}
+            data={data}
+            setTooltipData={setTooltipData}
           />
-        ))}
-        <GeoInterior d={geoPath(geoNaturalEarth1())(interiors)} />
-        {population.map((dp, i) => {
-          const [x, y] = geoNaturalEarth1()([dp.lng, dp.lat]);
-          return (
-            <PopulationPoint
-              key={i}
-              cx={x}
-              cy={y}
-              r={rScale(dp.population)}
-            ></PopulationPoint>
-          );
-        })}
-      </svg>
-    </VisBox>
+        </Wrapper>
+      </VisBox>
+      {tooltipData && <Tooltip data={tooltipData} />}
+    </>
   );
 };
 
-export default Vis6;
+export default Vis;
