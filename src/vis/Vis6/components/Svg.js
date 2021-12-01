@@ -34,7 +34,7 @@ const Svg = ({ states, counties, data, setTooltipData }) => {
       <g transform={`translate(${width - 300}, 0)`}>
         {colorScale.ticks().map((tick, i) => (
           <g key={tick} transform={`translate(${30 * i}, 0)`} id='legend'>
-            <line stroke='#ffffff78' y2='40' transform={`translate(10, 0)`}></line>
+            <line stroke='#ffffff78' y2='40' transform={`translate(15, 0)`}></line>
             <text y='50' x='5' fill='white' fontSize='10px' >
               {tick}%
             </text>
