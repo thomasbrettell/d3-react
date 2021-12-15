@@ -16,6 +16,7 @@ import MissingMigrants from './series/MissingMigrants';
 import MissingMigrants1 from './vis/MissingMigrants/Vis1';
 import MissingMigrants2 from './vis/MissingMigrants/Vis2';
 import MissingMigrants3 from './vis/MissingMigrants/Vis3';
+import Vis12 from './vis/Vis12';
 
 const App = () => {
   document.getElementById('fcc_test_suite_wrapper').style.display = 'none';
@@ -34,6 +35,7 @@ const App = () => {
       <Route path='/vis-9' element={<Vis9 />} />
       <Route path='/vis-10' element={<Vis10 />} />
       <Route path='/vis-11' element={<Vis11 />} />
+      <Route path='/vis-12' element={<Vis12 />} />
       <Route path='/missing-migrants/' element={<MissingMigrants />} />
       <Route path='/missing-migrants/vis-1' element={<MissingMigrants1 />} />
       <Route path='/missing-migrants/vis-2' element={<MissingMigrants2 />} />
