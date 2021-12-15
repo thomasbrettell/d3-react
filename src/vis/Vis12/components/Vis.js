@@ -3,6 +3,11 @@ import { hierarchy, treemap } from 'd3-hierarchy';
 import { scaleOrdinal } from 'd3-scale';
 import generateRandomRGB from '../util/generateRandomRGB';
 import Tooltip from './Tooltip';
+import styled from 'styled-components';
+
+const PointLabel = styled.text`
+  pointer-events: none;
+`;
 
 const Vis = (data) => {
   const [tooltipData, setTooltipData] = useState(null);
@@ -52,13 +57,13 @@ const Vis = (data) => {
                 }
                 onMouseOut={() => setTooltipData(null)}
               ></rect>
-              <text fontSize='10'>
+              <PointLabel fontSize='10'>
                 {d.data.name.split(' ').map((word, u) => (
                   <tspan key={u + i} x='4' y={10 * (u + 1) + 3}>
                     {word}
                   </tspan>
                 ))}
-              </text>
+              </PointLabel>
             </g>
           ))}
           <g transform={`translate(0, ${innerHeight + 20})`} id='legend'>
