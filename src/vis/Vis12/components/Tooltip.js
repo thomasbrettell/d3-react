@@ -25,6 +25,7 @@ const Tooltip = ({ data }) => {
 
   useEffect(() => {
     window.addEventListener('mousemove', onMouseMove);
+    return () => setMousePos({ x: 0, y: 0 })
   }, []);
 
   if (!data) {
