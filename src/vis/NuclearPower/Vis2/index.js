@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useCallback, useEffect, useState } from 'react';
 import useData from '../../../hooks/useData';
 import { Fieldset, Divider } from '@geist-ui/react';
 import styled from 'styled-components';
