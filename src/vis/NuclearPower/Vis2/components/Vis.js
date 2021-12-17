@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Spinner } from '@geist-ui/react';
 import CountrySelect from './CountrySelect';
-import { useState } from 'react/cjs/react.development';
 import Data from './Data';
 
 const LoadingOverlay = styled.div`
