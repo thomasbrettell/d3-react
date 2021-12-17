@@ -18,10 +18,6 @@ const TickLine = styled.line`
 
 const Bar = styled.rect`
   fill: white;
-
-  &:hover {
-    fill: grey;
-  }
 `;
 
 const YAxisText = styled.text`

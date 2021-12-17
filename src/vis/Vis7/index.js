@@ -4,6 +4,11 @@ import { csvParse } from 'd3-dsv';
 import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 import useData from '../../hooks/useData';
+import { Button } from '@geist-ui/react';
+
+const CenterButton = styled.div`
+  text-align: center;
+`;
 
 const VisBox = styled.div`
   display: flex;
@@ -42,7 +47,7 @@ const CirclePlot = styled.circle`
 `;
 
 const Vis7 = () => {
-  const [xSelect, setXSelect] = useState('year')
+  const [xSelect, setXSelect] = useState('year');
   const [data, setData] = useState(null);
   const transformData = useCallback((data) => {
     setData(csvParse(data));
@@ -58,11 +63,11 @@ const Vis7 = () => {
   if (!data) {
     return <p>Fetching data...</p>;
   }
-  console.log(data)
+  console.log(data);
 
   const selectXHandler = () => {
-    setXSelect(xSelect === 'year' ? 'duration' : 'year')
-  }
+    setXSelect(xSelect === 'year' ? 'duration' : 'year');
+  };
 
   const width = window.innerWidth;
   const height = window.innerHeight - 100;
@@ -88,49 +93,55 @@ const Vis7 = () => {
     .range([innerHeight, 0])
     .nice();
 
-  return (<>
-    <VisBox>
-      <svg width={width} height={height}>
-        <g transform={`translate(${margin.left}, ${margin.top})`}>
-          {xScale.ticks().map((tick) => (
-            <g key={tick} transform={`translate(${xScale(tick)}, 0)`}>
-              <TickLine y2={innerHeight} />
-              <XAxisText y={innerHeight} dy='1em'>
-                {tick}
-              </XAxisText>
-            </g>
-          ))}
-          {yScale.ticks().map((tick) => (
-            <g key={tick} transform={`translate(0, ${yScale(tick)})`}>
-              <TickLine x2={innerWidth} />
-              <YAxisText dy='.32em' x='-7'>
-                {tick}
-              </YAxisText>
-            </g>
-          ))}
-          <XAxisLabel x={innerWidth / 2} y={innerHeight + 50}>
-            {xSelect === 'year' ? 'Year' : 'Duration (min)'}
-          </XAxisLabel>
-          <YAxisLabel
-            transform={`translate(${-50}, ${innerHeight / 2}) rotate(-90)`}
-          >
-            Average Vote
-          </YAxisLabel>
-          {data.map((dp, i) => (
-            <CirclePlot
-              key={i}
-              cx={xScale(dp[xSelect])}
-              cy={yScale(dp[ySelect])}
-              r={3}
+  return (
+    <>
+      <VisBox>
+        <svg width={width} height={height}>
+          <g transform={`translate(${margin.left}, ${margin.top})`}>
+            {xScale.ticks().map((tick) => (
+              <g key={tick} transform={`translate(${xScale(tick)}, 0)`}>
+                <TickLine y2={innerHeight} />
+                <XAxisText y={innerHeight} dy='1em'>
+                  {tick}
+                </XAxisText>
+              </g>
+            ))}
+            {yScale.ticks().map((tick) => (
+              <g key={tick} transform={`translate(0, ${yScale(tick)})`}>
+                <TickLine x2={innerWidth} />
+                <YAxisText dy='.32em' x='-7'>
+                  {tick}
+                </YAxisText>
+              </g>
+            ))}
+            <XAxisLabel x={innerWidth / 2} y={innerHeight + 50}>
+              {xSelect === 'year' ? 'Year' : 'Duration (min)'}
+            </XAxisLabel>
+            <YAxisLabel
+              transform={`translate(${-50}, ${innerHeight / 2}) rotate(-90)`}
             >
-              <title>{dp.title}</title>
-            </CirclePlot>
-          ))}
-        </g>
-      </svg>
-    </VisBox>
-    <button onClick={selectXHandler}>Show {xSelect === 'year' ? 'duration' : 'year'}</button>
-  </>);
+              Average Vote
+            </YAxisLabel>
+            {data.map((dp, i) => (
+              <CirclePlot
+                key={i}
+                cx={xScale(dp[xSelect])}
+                cy={yScale(dp[ySelect])}
+                r={3}
+              >
+                <title>{dp.title}</title>
+              </CirclePlot>
+            ))}
+          </g>
+        </svg>
+      </VisBox>
+      <CenterButton>
+        <Button onClick={selectXHandler} margin='auto'>
+          Show {xSelect === 'year' ? 'duration' : 'year'}
+        </Button>
+      </CenterButton>
+    </>
+  );
 };
 
 export default Vis7;

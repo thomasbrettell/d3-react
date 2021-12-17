@@ -1,6 +1,22 @@
 import React, { useCallback, useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 import useData from '../../../hooks/useData';
+import { Fieldset, Divider } from '@geist-ui/react';
+import styled from 'styled-components';
+import Vis from './components/Vis';
+
+const PageWrapper = styled.div`
+  padding-top: 50px;
+`;
+
+const VisWrapper = styled.div`
+  position: relative;
+`;
+
+const FieldWrapper = styled.div`
+  margin: auto;
+  width: max-content;
+`;
 
 const Vis2 = () => {
   const [data, setData] = useState(null);
@@ -13,12 +29,25 @@ const Vis2 = () => {
     });
   }, [sendRequest]);
 
-  if (!data) {
-    return <pre>Fetching data</pre>;
-  }
-  console.log(data);
-
-  return <p>Vis2</p>;
+  return (
+    <PageWrapper>
+      <FieldWrapper>
+        <Fieldset>
+          <Fieldset.Content>
+            <Fieldset.Title>Vis title</Fieldset.Title>
+            <Fieldset.Subtitle>Vis description</Fieldset.Subtitle>
+          </Fieldset.Content>
+          <Divider my={0} />
+          <Fieldset.Content>
+            <VisWrapper>
+              <Vis data={data} />
+            </VisWrapper>
+          </Fieldset.Content>
+          <Fieldset.Footer>Source: Our World in Data</Fieldset.Footer>
+        </Fieldset>
+      </FieldWrapper>
+    </PageWrapper>
+  );
 };
 
 export default Vis2;

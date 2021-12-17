@@ -8,10 +8,14 @@ import { timeFormat } from 'd3-time-format';
 import { line } from 'd3-shape';
 import { curveNatural } from 'd3-shape';
 
+const H1 = styled.h1`
+  text-align: center;
+`
+
 const VisBox = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 const TickLine = styled.line`
@@ -78,6 +82,8 @@ const Vis5 = () => {
 
   console.log(data);
   return (
+    <>
+    <H1>Weekly Temperature in San Francisco 2015</H1>
     <VisBox>
       <svg width={width} height={height}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
@@ -125,7 +131,7 @@ const Vis5 = () => {
         </g>
       </svg>
     </VisBox>
-  );
+  </>);
 };
 
 export default Vis5;

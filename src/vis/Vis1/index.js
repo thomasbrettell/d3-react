@@ -1,6 +1,13 @@
 import React from 'react';
 import Face from './components/Face';
 import { range } from 'd3-array';
+import styled from 'styled-components';
+
+const VixBox = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
 const Vis1 = () => {
   const width = 166;
@@ -9,7 +16,7 @@ const Vis1 = () => {
   const arr = range(50);
 
   return (
-    <>
+    <VixBox>
       {arr.map((el, i) => (
         <Face
           key={i}
@@ -30,7 +37,7 @@ const Vis1 = () => {
           })`}
         />
       ))}
-    </>
+    </VixBox>
   );
 };
 
