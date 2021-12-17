@@ -19,6 +19,7 @@ const Home = () => {
         <NavLink link='/vis-11' text='Vis 11 - Monthly Land Surface Temperature 1753-2015 (FCC Heatmap)'/>
         <NavLink link='/missing-migrants' text='SERIES: Missing Migrants (3 vis)'/>
         <NavLink link='/vis-12' text='Vis 12 - Movie Sales (FCC Treemap)'/>
+        <NavLink link='/nuclear-power' text='SERIES: Nuclear Power'/>
       </ul>
     </nav>
   );

@@ -1,0 +1,152 @@
+[
+	{
+		"Entity": "Argentina",
+		"Code": "ARG",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 72
+	},
+	{
+		"Entity": "Australia",
+		"Code": "AUS",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 66
+	},
+	{
+		"Entity": "Belgium",
+		"Code": "BEL",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 60
+	},
+	{
+		"Entity": "Brazil",
+		"Code": "BRA",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 69
+	},
+	{
+		"Entity": "Canada",
+		"Code": "CAN",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 63
+	},
+	{
+		"Entity": "China",
+		"Code": "CHN",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 58
+	},
+	{
+		"Entity": "France",
+		"Code": "FRA",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 67
+	},
+	{
+		"Entity": "Germany",
+		"Code": "DEU",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 79
+	},
+	{
+		"Entity": "Hungary",
+		"Code": "HUN",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 59
+	},
+	{
+		"Entity": "India",
+		"Code": "IND",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 39
+	},
+	{
+		"Entity": "Indonesia",
+		"Code": "IDN",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 67
+	},
+	{
+		"Entity": "Italy",
+		"Code": "ITA",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 81
+	},
+	{
+		"Entity": "Japan",
+		"Code": "JPN",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 58
+	},
+	{
+		"Entity": "Mexico",
+		"Code": "MEX",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 81
+	},
+	{
+		"Entity": "Poland",
+		"Code": "POL",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 43
+	},
+	{
+		"Entity": "Russia",
+		"Code": "RUS",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 62
+	},
+	{
+		"Entity": "Saudi Arabia",
+		"Code": "SAU",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 58
+	},
+	{
+		"Entity": "South Africa",
+		"Code": "ZAF",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 60
+	},
+	{
+		"Entity": "South Korea",
+		"Code": "KOR",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 61
+	},
+	{
+		"Entity": "Spain",
+		"Code": "ESP",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 60
+	},
+	{
+		"Entity": "Sweden",
+		"Code": "SWE",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 51
+	},
+	{
+		"Entity": "Turkey",
+		"Code": "TUR",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 71
+	},
+	{
+		"Entity": "United Kingdom",
+		"Code": "GBR",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 51
+	},
+	{
+		"Entity": "United States",
+		"Code": "USA",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 48
+	},
+	{
+		"Entity": "World",
+		"Code": "OWID_WRL",
+		"Year": 2011,
+		"Opposed to nuclear energy (Ipsos MORI (2011))": 62
+	}
+]

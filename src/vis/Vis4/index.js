@@ -4,11 +4,14 @@ import { csvParse } from 'd3-dsv';
 import { extent } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import styled from 'styled-components';
+import { Select } from '@geist-ui/react';
+
+const radius = 10;
 
 const VisBox = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  padding-top: 50px;
 `;
 
 const TickLine = styled.line`
@@ -69,7 +72,6 @@ const ColourScale = styled.g`
 `;
 
 const Vis4 = () => {
-  const [radius, setRadius] = useState(10);
   const [yPlot, setYPlot] = useState('sepal_width');
   const [xPlot, setXPlot] = useState('sepal_length');
   const [hoveredValue, setHoveredValue] = useState(null);
@@ -179,36 +181,25 @@ const Vis4 = () => {
       </VisBox>
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <InputControl>
-          <span>radius</span>
-          <input
-            type='range'
-            min='1'
-            max='20'
-            value={radius}
-            onChange={(e) => setRadius(e.target.value)}
-          />
-        </InputControl>
-
-        <InputControl>
           <span>y-axis</span>
-          <select value={yPlot} onChange={(e) => setYPlot(e.target.value)}>
+          <Select value={yPlot} onChange={(val) => setYPlot(val)}>
             {axisOptions.map((option) => (
-              <option key={option} value={option}>
+              <Select.Option key={option} value={option}>
                 {option}
-              </option>
+              </Select.Option>
             ))}
-          </select>
+          </Select>
         </InputControl>
 
         <InputControl>
           <span>x-axis</span>
-          <select value={xPlot} onChange={(e) => setXPlot(e.target.value)}>
+          <Select value={xPlot} onChange={(val) => setXPlot(val)}>
             {axisOptions.map((option) => (
-              <option key={option} value={option}>
+              <Select.Option key={option} value={option}>
                 {option}
-              </option>
+              </Select.Option>
             ))}
-          </select>
+          </Select>
         </InputControl>
       </div>
     </>

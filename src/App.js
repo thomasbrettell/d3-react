@@ -18,11 +18,15 @@ import MissingMigrants1 from './vis/MissingMigrants/Vis1';
 import MissingMigrants2 from './vis/MissingMigrants/Vis2';
 import MissingMigrants3 from './vis/MissingMigrants/Vis3';
 import Vis12 from './vis/Vis12';
+import NuclearPower from './series/NuclearPower';
+import NuclearPowerVis1 from './vis/NuclearPower/Vis1';
+import NuclearPowerVis2 from './vis/NuclearPower/Vis2';
 
 const HomeLink = styled(Link)`
-  position: absolute;
-  right: 0;
-  top: 0;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  z-index: 100;
 `;
 
 const App = () => {
@@ -50,6 +54,9 @@ const App = () => {
         <Route path='/missing-migrants/vis-2' element={<MissingMigrants2 />} />
         <Route path='/missing-migrants/vis-3' element={<MissingMigrants3 />} />
         <Route path='*' element={<Navigate replace to='/' />} />
+        <Route path='/nuclear-power' element={<NuclearPower />} />
+        <Route path='/nuclear-power/vis-1' element={<NuclearPowerVis1 />} />
+        <Route path='/nuclear-power/vis-2' element={<NuclearPowerVis2 />} />
       </Routes>
     </>
   );
