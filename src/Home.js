@@ -20,7 +20,7 @@ const Home = () => {
         <NavLink link='/missing-migrants' text='SERIES: Missing Migrants (3 vis)'/>
         <NavLink link='/vis-12' text='Vis 12 - Movie Sales (FCC Treemap)'/>
         <NavLink link='/nuclear-power' text='SERIES: Nuclear Power'/>
-        <NavLink link='/vis-13' text='Vis 13'/>
+        <NavLink link='/vis-13' text='Vis 13 - World Wide population, 1750 - 2020'/>
       </ul>
     </nav>
   );

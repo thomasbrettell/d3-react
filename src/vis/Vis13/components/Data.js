@@ -7,7 +7,8 @@ const GeoPath = styled.path`
   stroke: none;
 
   &:hover {
-    stroke: red;
+    stroke: white;
+    stroke-width: 2;
   }
 `;
 
@@ -21,7 +22,7 @@ const path = geoPath(geoNaturalEarth1());
 
 const targetProperty = 'population';
 
-const Data = ({ data, width, height, topology, interiors, selectedYear }) => {
+const Data = ({ data, topology, interiors, selectedYear, onHover }) => {
   const margin = {
     top: 20,
     right: 0,
@@ -42,9 +43,7 @@ const Data = ({ data, width, height, topology, interiors, selectedYear }) => {
 
   const colorScale = scaleLinear()
     .domain(extent(Object.keys(data), colorVal))
-    .range(['#e5f5e0', '#006d2c']);
-
-  console.log(colorScale.domain());
+    .range(['#ffe4e4', '#ff0000']);
 
   return (
     <g transform={`translate(${margin.left}, ${margin.top})`}>
@@ -60,6 +59,13 @@ const Data = ({ data, width, height, topology, interiors, selectedYear }) => {
               data-country={dp.properties.name}
               d={path(dp)}
               fill={colorScale(property) || 'grey'}
+              onMouseEnter={() =>
+                onHover({
+                  country: dp.properties.name,
+                  population: property || 'Missing data',
+                })
+              }
+              onMouseOut={() => onHover(null)}
             ></GeoPath>
           );
         })}

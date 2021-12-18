@@ -28,6 +28,18 @@ const excludeList = [
   'EU-27',
 ];
 
+const changeList = {
+  'United States': 'United States of America',
+  'Central African Republic': 'Central African Rep.',
+  'Dominican Republic': 'Dominican Rep.',
+  'Democratic Republic of Congo': 'Dem. Rep. Congo',
+  'Bosnia and Herzegovina': 'Bosnia and Herz.',
+  "Cote d'Ivoire": "Côte d'Ivoire",
+  'South Sudan': 'S. Sudan',
+  'West Sahara': 'W. Sahara',
+  Timor: 'Timor-Leste',
+};
+
 const Vis13 = () => {
   const [data, setData] = useState(null);
   const [topology, setTopology] = useState(null);
@@ -36,8 +48,8 @@ const Vis13 = () => {
     for (const p in data) {
       if (excludeList.includes(p) || !data[p].iso_code) {
         delete data[p];
-      } else if (p === 'United States') {
-        data['United States of America'] = data[p];
+      } else if (changeList[p]) {
+        data[changeList[p]] = data[p];
         delete data[p];
       }
     }

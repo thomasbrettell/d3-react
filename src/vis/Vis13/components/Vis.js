@@ -4,6 +4,7 @@ import { Spinner } from '@geist-ui/react';
 import Data from './Data';
 import YearPicker from './YearPicker';
 import { useState } from 'react/cjs/react.development';
+import Tooltip from './Tooltip';
 
 const LoadingOverlay = styled.div`
   position: absolute;
@@ -22,6 +23,7 @@ const height = 450;
 
 const Vis = ({ data, topology, interiors }) => {
   const [selectedYear, setSelectedYear] = useState('2020');
+  const [tooltipData, setTooltipData] = useState(null);
   return (
     <>
       {!data && topology && interiors && (
@@ -38,15 +40,19 @@ const Vis = ({ data, topology, interiors }) => {
             height={height}
             width={width}
             selectedYear={selectedYear}
+            onHover={setTooltipData}
           />
         )}
       </svg>
       {data && topology && interiors && (
-        <YearPicker
-          data={data}
-          value={selectedYear}
-          onChange={setSelectedYear}
-        />
+        <>
+          <YearPicker
+            data={data}
+            value={selectedYear}
+            onChange={setSelectedYear}
+          />
+          <Tooltip data={tooltipData} />
+        </>
       )}
     </>
   );

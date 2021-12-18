@@ -10,7 +10,10 @@ const Box = styled.div`
 const minMaxVal = (dp) => dp.year;
 
 const YearPicker = ({ data, onChange, value }) => {
-  const flatData = useMemo(() => Object.keys(data).flatMap((dp) => data[dp].data), [data]);
+  const flatData = useMemo(
+    () => Object.keys(data).flatMap((dp) => data[dp].data),
+    [data]
+  );
   const minMax = useMemo(() => extent(flatData, minMaxVal), [flatData]);
   const changeHandler = (val) => onChange(val);
 
