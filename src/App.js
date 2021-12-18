@@ -22,7 +22,7 @@ import NuclearPower from './series/NuclearPower';
 import NuclearPowerVis1 from './vis/NuclearPower/Vis1';
 import NuclearPowerVis2 from './vis/NuclearPower/Vis2';
 import NuclearPowerVis3 from './vis/NuclearPower/Vis3';
-import NuclearPowerVis4 from './vis/NuclearPower/Vis4';
+// import NuclearPowerVis4 from './vis/NuclearPower/Vis4';
 import Vis13 from './vis/Vis13';
 
 const HomeLink = styled(Link)`
@@ -60,7 +60,7 @@ const App = () => {
         <Route path='/nuclear-power/vis-1' element={<NuclearPowerVis1 />} />
         <Route path='/nuclear-power/vis-2' element={<NuclearPowerVis2 />} />
         <Route path='/nuclear-power/vis-3' element={<NuclearPowerVis3 />} />
-        <Route path='/nuclear-power/vis-4' element={<NuclearPowerVis4 />} />
+        {/* <Route path='/nuclear-power/vis-4' element={<NuclearPowerVis4 />} /> */}
         <Route path='/vis-13' element={<Vis13 />} />
         <Route path='*' element={<Navigate replace to='/' />} />
       </Routes>
