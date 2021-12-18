@@ -13,6 +13,10 @@ const NuclearPower = () => {
           link='/nuclear-power/vis-2'
           text='Vis 2 - International energy consumption from different energy sources'
         />
+        <NavLink
+          link='/nuclear-power/vis-3'
+          text='Vis 3 - Comparing C02 emissions, deaths and global share of energy for different sources of energy'
+        />
       </ul>
     </nav>
   );

@@ -1,0 +1,53 @@
+{
+  "source": "https://ourworldindata.org/safest-sources-of-energy",
+  "data": [
+    {
+      "source": "Coal",
+      "global_energy_share": 25,
+      "deaths_per_twh": 24.6,
+      "co2_tonnes_per_gwh": 820
+    },
+    {
+      "source": "Oil",
+      "global_energy_share": 31,
+      "deaths_per_twh": 18.4,
+      "co2_tonnes_per_gwh": 720
+    },
+    {
+      "source": "Natural Gas",
+      "global_energy_share": 23,
+      "deaths_per_twh": 2.8,
+      "co2_tonnes_per_gwh": 490
+    },
+    {
+      "source": "Biomass",
+      "global_energy_share": 7,
+      "deaths_per_twh": 4.6,
+      "co2_tonnes_per_gwh": 152
+    },
+    {
+      "source": "Hydropower",
+      "global_energy_share": 6,
+      "deaths_per_twh": 0.02,
+      "co2_tonnes_per_gwh": 34
+    },
+    {
+      "source": "Nuclear",
+      "global_energy_share": 4,
+      "deaths_per_twh": 0.07,
+      "co2_tonnes_per_gwh": 3
+    },
+    {
+      "source": "Wind",
+      "global_energy_share": 2,
+      "deaths_per_twh": 0.04,
+      "co2_tonnes_per_gwh": 4
+    },
+    {
+      "source": "Solar",
+      "global_energy_share": 1,
+      "deaths_per_twh": 0.02,
+      "co2_tonnes_per_gwh": 5
+    }
+  ]
+}
