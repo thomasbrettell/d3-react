@@ -58,6 +58,8 @@ const Vis = () => {
     return <p>Fetching data...</p>;
   }
 
+  console.log(data)
+
   return (
     <>
       <H1 id='title'>United States Degree Attainment</H1>
