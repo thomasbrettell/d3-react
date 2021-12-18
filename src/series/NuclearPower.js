@@ -11,7 +11,7 @@ const NuclearPower = () => {
         />
         <NavLink
           link='/nuclear-power/vis-2'
-          text='Vis 2'
+          text='Vis 2 - International energy consumption from different energy sources'
         />
       </ul>
     </nav>

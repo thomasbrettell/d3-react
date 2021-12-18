@@ -34,7 +34,7 @@ const Vis2 = () => {
         <Fieldset>
           <Fieldset.Content>
             <Fieldset.Title>
-              International energy consumption from different sources
+              International energy consumption from different energy sources
             </Fieldset.Title>
             <Fieldset.Subtitle>
               The bars show how many terawatts-per-hour are generated in the
