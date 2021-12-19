@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Spinner } from '@geist-ui/react';
 import Data from './Data';
 import YearPicker from './YearPicker';
-import { useState } from 'react/cjs/react.development';
 import Tooltip from './Tooltip';
 
 const LoadingOverlay = styled.div`
