@@ -57,6 +57,11 @@ const Home = () => {
             World War 2
           </a>
         </li>
+        <li>
+          <a target='_blank' rel='noreferrer' href='https://f1-d3-vis.vercel.app/'>
+            F1 Drivers Connection Map 1979 - 2021
+          </a>
+        </li>
       </ul>
     </nav>
   );
