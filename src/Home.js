@@ -4,7 +4,7 @@ import DomesticViolenceDoc from './assets/DomesticViolence_documentation.pdf';
 import DomesticViolenceVis from './assets/Is-Summer-the-Season-for-Domestic-Violence.pdf';
 import OlympicsVis from './assets/ThomasBrettell_tbre2522_A1_DECO3100.pdf';
 
-//PLEASE DONT FORMAT
+//PLEASE DONT FORMAT - whoops
 const Home = () => {
   return (
     <nav>
@@ -58,10 +58,15 @@ const Home = () => {
           </a>
         </li>
         <li>
-          <a target='_blank' rel='noreferrer' href='https://f1-d3-vis.vercel.app/'>
+          <a
+            target='_blank'
+            rel='noreferrer'
+            href='https://f1-d3-vis.vercel.app/'
+          >
             F1 Drivers Connection Map 1979 - 2021
           </a>
         </li>
+        <NavLink link='/vis-14' text='Vis 14 - Causes of Death per Nation' />
       </ul>
     </nav>
   );

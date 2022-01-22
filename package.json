@@ -34,6 +34,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@geist-ui/icons": "^1.0.1",
     "@geist-ui/react": "^2.2.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
